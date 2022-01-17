@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding:25px 0px;
+    background: #071A2F;
+    border-bottom: 1px solid rgba(173, 206, 255, 0.13);
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+    color:#fff;
+    margin-bottom: 60px;
+}
+
+.headerText{
+    margin: 20px 0px;
+    font-family: "Plus Jakarta Sans";
+    font-size: 36px;
+    line-height: 1.11429;
+    max-width: 500px;
+}

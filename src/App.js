@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React , { useEffect, useState } from 'react';
+import styles from './App.module.css'
+import {Header , Search , Cards , Tabel} from './Components'
+import { fetchData } from './Api/';
+import "@fontsource/plus-jakarta-sans"
 
 function App() {
+  const [data,setData] = useState([]);
+  const [query,setQuery] = useState('');
+
+   useEffect(() => {
+    if(query!==''){
+      const fetchMyApi=async ()=>{
+        let fetchedData =await fetchData(query);
+        setData(fetchedData);
+      }
+       fetchMyApi();
+    }
+  }, [query]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.container}>
+      <Header></Header>
+      <Search changeQuery={setQuery} ></Search>
+      <Cards data={data}></Cards>
+      <Tabel  data={data} ></Tabel>
     </div>
   );
 }
